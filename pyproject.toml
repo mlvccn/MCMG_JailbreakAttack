@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "work1-multimodal-attack"
+version = "0.1.0"
+description = "Official Work1 implementation"
+readme = "README.md"
+requires-python = ">=3.10,<3.11"
+
+[tool.setuptools.packages.find]
+include = ["attacks*", "multimodalmodels*"]
+
+[tool.setuptools]
+py-modules = ["work1_base"]

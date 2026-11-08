@@ -1,0 +1,6 @@
+name: work1-train
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10.19
+  - pip

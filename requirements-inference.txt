@@ -1,0 +1,9 @@
+--extra-index-url https://download.pytorch.org/whl/cu128
+
+torch==2.8.0+cu128
+torchvision==0.23.0+cu128
+pillow==12.0.0
+qwen-vl-utils==0.0.14
+tiktoken==0.12.0
+transformers==4.57.3
+vllm==0.11.0

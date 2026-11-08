@@ -1,0 +1,51 @@
+name: "work1_llava_v1_5_7b"
+
+parameters:
+    prior_image: "attacks/data/clean.jpeg"
+    corpus: "attacks/data/harmful_behaviors.csv"
+    target_model: "/path/to/llava-1.5-7b-hf"
+    model_dtype: "float16"
+    model_image_size: 336
+    model_max_txt_len: 2048
+    model_attn_implementation: "sdpa"
+    image_gradient_sub_batch_size: 1
+    preview_max_new_tokens: 300
+    save_dir: "output/test_cases/work1_llava_v1_5_7b"
+    n_iters: 2000
+    batch_size: 8
+    eps: 32
+    alpha: 1.0
+    random_seed: 42
+    training_sample_size: 66
+
+    use_mcts: true
+    mcts_min_accept_depth: 15
+    mcts_deep_accept_improvement: 0.02
+    mcts_shallow_accept_improvement: 0.05
+    mcts_position_stride: 5
+    mcts_full_rollout_after_reroot: false
+    mcts_historical_candidate_quota: 5
+    mcts_validation_batch_size: 8
+
+    use_semantic_loss: true
+    semantic_loss_weight: 0.3
+    semantic_loss_mode: "attention"
+    use_prefix_ce_loss: true
+    prefix_ce_loss_weight: 2.0
+    prefix_ce_text: "Sure, here is"
+    use_refusal_sem_loss: false
+    refusal_sem_loss_weight: 0.3
+
+    coordination_strength: 0.0
+    num_coordination_samples: 3
+    use_embedding_sampling: true
+    embedding_num_samples: 64
+    embedding_sample_temperature: 1.0
+    embedding_uniform_ratio: 0.3
+    greedy_eval_candidates: 3
+    greedy_eval_candidates_max: 8
+    greedy_expand_threshold: 0.01
+
+    lm_prior_weight: 0.0
+    bigram_table_path: ""
+
