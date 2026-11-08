@@ -7,9 +7,7 @@
 
 ## Introduction
 
-Jailbreak attacks act as an important way of evaluating the safety alignment and robustness of multimodal large language models. Existing universal multimodal jailbreak attacks face two major problems: 1) When text suffix search selects candidate text suffixes via gradient-estimated loss, due to text discreteness, the estimated values are often inconsistent with the loss values of model, and the sequential relationships among tokens are not fully considered; 2) Since visual perturbations rely on the current training text query and spatial gradients of image, the attack ability on the current training query is difficult to generalize to other text quries. To address the above problems, this paper proposes a multimodal jailbreak attack method via Monte-Carlo Tree Context Search and Multi-view Gradient Consistency (MCMG). The former Monte-carlo tree Context Search (MCS) module  seeks text suffix by context modeling of the latent token sequential relations, while the latter Multi-view Gradient Consistency (MGC) module generates perturbation by dynamic modeling of multi-view pixel-wise spatial relation.  
-In particular, the MCS module makes candiate token suffixes by employing their embedding similarity and transfer probability as priori, and models the text suffix search context by Monte-Carlo tree. This yields a set of complete candiate text suffixes, which are selected in a coarse-to-fine manner on training queries and validation ones respectively. The selected candiate suffix replaces the original suffix in a tree, when it degrades the loss of model. Moreover, the MGC module obtains multi-view images by pixel-level neighborhood sampling of the current image with combination transformations, and computes their gradients. By imposing pixel-level gradient consistency among multi-view images, we obtain soft masks to dynamically adjust step for generating stronger perturbations. By freezing the model parameters, text suffix and adversarial image are updated alternatively, using the weighted cross-entropy loss of prediction probabilities for both modules. 
-We generate jailbreak samples on AdvBench dataset to examine our attacker under the settings of white-box/cross-modal attacks, and denfense, on two benchmarks including HarmBench and MM-SafetyBench. Results demonstrate the stronger attack abilities under different text queries and target modals.  
+Jailbreak attacks provide a fundamental way of evaluating the safety alignment and robustness of multimodal large language models (MLLMs). Existing universal multimodal jailbreak attacks face two major challenges. First, the sequential relations among tokens are not fully considered during text suffix search. Second, visual perturbations depend on the current text query and local image gradients, so they generalize poorly to other queries. To address these challenges, we propose a multimodal jailbreak attack method, termed MCMG, which combines Monte Carlo tree Context Search (MCS) with Multi-view Gradient Consistency (MGC). MCS module searches the text suffix by modeling the context of implicit token sequential relations, and MGC module generates perturbations by dynamically modeling multi-view pixel-wise spatial relations. Specifically, MCS constructs candidate token suffixes from embedding similarity and transition probability as priors, and models the suffix search context with a Monte Carlo tree. The resulting complete candidate suffixes are selected in a coarse-to-fine manner on search queries and validation queries, respectively. A suffix replaces the current one in the tree only when it reduces the model loss. MGC obtains multi-view images by pixel-level neighborhood sampling of the current image with composite transformations, and computes their gradients. By enforcing pixel-level gradient consistency across these views, it derives soft masks that dynamically adjust the update step for stronger perturbations. With the model parameters frozen, the text suffix and the adversarial image are updated alternately. We generate jailbreak samples on the AdvBench dataset to examine the attack under white-box and cross-model attacks as well as defenses. Results on two benchmarks, \ie, HarmBench and MM-SafetyBench, demonstrate the strong attack ability of our attacker across different text queries and target models.  
 
 ![](figs/framework.png)
 
@@ -474,10 +472,10 @@ Each cell reports ASR / SR (%). Bold and underlined values indicate the best and
 ## Citation
 
 ```bibtex
-@inproceedings{anonymous2026work1,
-  author    = {},
-  title     = {},
-  booktitle = {},
+@article{li-draft2026-jailbreak,
+  author    = {Ping Li, Lijie Shang, Wei Xia},
+  title     = {Multimodal Jailbreak Attack via Monte-Carlo Tree Context Search and Multi-view Gradient Consistency},
+  journal   = {DRAFT},
   year      = {2026}
 }
 ```
